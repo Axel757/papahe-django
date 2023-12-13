@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/pphRegister.css' %}">
+</head>
+
+<body>
+    <h1 class="text-center">Registro de Usuarios</h1>
+    <div class="container">
+        <a href="{% url 'login' %}"><img class="pphLogo" src="{% static 'img/Papahe/LOGO-DEF2023-06.png' %}" alt=""></a>
+        <form action="{% url 'registro2' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}">Nombre:</label>
+                <br>
+                {{ form.username }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.password1.id_for_label }}">Clave:</label>
+                <br>
+                {{ form.password1 }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.password2.id_for_label }}">Confirmar Clave:</label>
+                <br>
+                {{ form.password2 }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.tipo_usuario.id_for_label }}">Tipo de Usuario:</label>
+                <br>
+                {{ form.tipo_usuario }}
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Registrar Usuario" class="btn btn-outline-dark">
+            </div>
+            <br>
+        </form>
+    </div>
+    <br>
+    {% if form.errors %}
+    <ul class="errorlist">
+        {% for field, errors in form.errors.items %}
+            <li>{{ field }}:
+                <ul class="errorlist">
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+{% endif %}
+
+    <div id="flowerfooter-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+html, body {
+    height: 100%;
+    margin: 0;
+
+}
+#header-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: #E6193D;
+    width: 100%;
+    height: 125px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 125px; 
+    background: rgb(255, 231, 191);
+}
+
+
+
+#catalog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 231, 191);
+    text-shadow: 1px #f02323;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#catalog-title a,
+#catalog-title a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+#catalog-title a:hover {
+    color: #FDB03B;
+}
+
+
+.pphLogoGas {
+    background-color: #FFE9A2;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-60%, -50%);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #000000;
+}
+
+#imgProducto {
+    width: 300px;
+    height: 350px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+}
+
+
+#img-preview{
+    width: 350px;
+    height: 400px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+}
+
+.nombre {
+    color: #f02323;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+
+}
+
+.infoGas {
+    white-space: nowrap;
+    color: #f02323;
+}
+
+#catalogoImg {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px #f02323;
+}
+
+#volver{
+    background-color: #FFE9A2;
+    margin: 5%;
+    height: 50px;
+    width: 200px;
+}
+
+#Propiedades th {
+    vertical-align: top;
+}
+
+.propiedades-row td{
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    color: #f02323;
+}
+
+table, th, td {
+    border: 1px solid #000000;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    text-align: justify;
+}
+
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+
+    tr {
+        margin-bottom: 15px;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        position: absolute;
+        top: 0;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1):before { content: "Marca:"; }
+    td:nth-of-type(2):before { content: "Categoria:"; }
+    td:nth-of-type(3):before { content: "Descripción:"; }
+}
+
+i { 
+    
+    vertical-align: middle;
+    font-size: 25px;
+}
+

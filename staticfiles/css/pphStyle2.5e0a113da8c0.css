@@ -1,0 +1,68 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, rgb(255, 237, 204) 1%, rgb(255, 242, 208) 10%, rgb(255, 233, 162) 50%, rgb(253, 176, 59) 100%);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+.catalogo-list {
+    text-align: center; 
+    padding: 0 20px;
+}
+
+#medicinal, #gastronomico {
+    font-size: larger;
+    font-weight: bold;
+    padding: 0 20%;
+    white-space: nowrap;
+    text-shadow: 0px 5px 8px rgb(0, 0, 0, 0.3);
+}
+
+#gastronomico {
+    color: rgba(230, 25, 61, 1); 
+    -webkit-text-stroke: 1px rgb(255, 33, 73); 
+    -webkit-text-fill-color: rgba(230, 25, 61, 1); 
+}
+
+#medicinal {
+    color: rgba(53, 110, 29, 1); 
+    -webkit-text-stroke: 1px rgb(77, 156, 43); 
+    -webkit-text-fill-color: rgb(53, 110, 29);
+}
+
+#flowerfooter-container {
+    width: 100%;
+    height: 100px; 
+    margin-top: auto;
+    background-image: url("../img/Papahe/flowerfooter.fa8d3010e50c.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+#btnSalir {
+    border: 2px solid rgb(53, 110, 29);
+}
+
+a {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5; 
+    color: transparent;
+    text-shadow: 0 0 0 rgb(230, 25, 61);
+}
+
+a span {
+    color: rgb(230, 25, 61); 
+}

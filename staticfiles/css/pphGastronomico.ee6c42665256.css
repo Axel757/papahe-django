@@ -1,0 +1,94 @@
+html, body {
+    height: 100%;
+    margin: 0;
+
+}
+#header-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: #E6193D;
+    width: 100%;
+    height: 125px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 125px; 
+    background: rgb(255, 231, 191);
+}
+
+
+#catalog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 231, 191);
+    text-shadow: 1px #f02323;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.pphLogoMed {
+    background-color: #FFE9A2;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-60%, -50%);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #000000;
+}
+
+#imgProducto {
+    width: 340px;
+    height: 450px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+}
+
+.nombre {
+    color: #f02323;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+
+}
+
+.info {
+    color: #f02323;
+}
+
+#catalogoImg {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    border: solid 1px #f02323;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.product-item {
+    text-align: center;
+    margin: 10px;
+    
+}
+
+#medNombre{
+    color: #f02323;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-top: 5%;
+}
+
+#seleccion{
+    background-color: #FFE9A2;
+    margin: 5%;
+    height: 50px;
+    width: 200px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECCION DE CATÁLOGO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/pphStyle2.css' %}">
+</head>
+
+<body>
+    <div class="username-container">
+        <p>
+        <h6>Sesión iniciada como: {{ username }} - {{ tipo_usuario }}</h6>
+        </p>
+    </div>
+    <div class="catalogo-container">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th colspan="4" class="text-center catalog-header">
+                        <h1>SELECCIONA UN CATÁLOGO</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center" colspan="2"> <a href="{% url 'medicinal' %}" id="medicinal">
+                            <p><span>CATÁLOGO DE</span><br><span>MEDICINA NATURAL</span></p>
+                        </a></th>
+                    <th class="text-center" colspan="2"> <a href="{% url 'gastronomico' %}" id="gastronomico">
+                            <p><span>CATÁLOGO DE</span><br><span>PRODUCTOS GASTRONÓMICOS</span></p>
+                        </a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td class="text-center medicinal-container">
+                        <a href="{% url 'medicinal' %}">
+                            <img src="{% static 'img/personajes/personajes_medicinales/pjmedicinal.png' %}" class="pjmedicinal" alt="">
+                        </a>
+                    </td>
+                    <td class="text-center medicinal-container">
+                        <a href="{% url 'medicinal' %}">
+                            <img src="{% static 'img/Papahe/LOGO-DEF2023-02.png' %}" class="pphLogoMed" alt="Logo">
+                        </a>
+                    </td>
+
+                    <td class="text-center gastronomia-container">
+                        <a href="{% url 'gastronomico' %}">
+                            <img src="{% static 'img/Papahe/LOGO-DEF2023-01.png' %}" class="pphLogoGas" alt="Logo">
+                        </a>
+                    </td>
+                    <td class="text-center gastronomia-container">
+                        <a href="{% url 'gastronomico' %}">
+                            <img src="{% static 'img/personajes/personajes_gastronomicos/pjgastronomico.png' %}" class="pjgastronomico">
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="4">
+                        {% if request.user.is_authenticated and request.user.is_staff %}
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+                        {% endif %}
+                        
+                        <p><a href="{% url 'registro2' %}"><h3>Registrar Cuenta</h3></a></p>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+    <div id="flowerfooter-container" class="text-center ">
+        <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#confirmacionModal">
+            <h3>Salir</h3>
+        </button>
+    </div>
+    <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmacionModalLabel">Confirmar Cierre de Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a href="{% url 'salir' %}?next={% url 'login' %}" class="btn btn-danger">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/simultaneous-animations.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

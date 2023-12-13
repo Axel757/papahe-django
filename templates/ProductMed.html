@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/pphMedicinal.css' %}">
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="catalog-title">
+            <a href="{% url 'seleccion' %}">
+                CATÁLOGO DE<br> MEDICINA NATURAL
+            </a>
+        </div>
+        <img src="{% static 'img/Papahe/LOGO-DEF2023-02.png' %}" class="pphLogoMed" alt="Logo">
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 470px;">
+                    <div id="crud-container" class="mx-1">
+                        <form method="get" action="{% url 'medicinal' %}">
+                            <div class="button-container">
+                                <input type="text" placeholder="Buscar productos" id="search-input" name="search"
+                                    value="{{ search_term }}">
+                                <button type="submit" class="btn btn-outline-dark" id="search-button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                {% if request.user.is_authenticated and request.user.is_staff %}
+                                <a href="{% url 'agregarmedicinal' %}" class="btn btn-outline-dark" id="add-med">
+                                    <i class="bi bi-plus" id="bi-plus"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                    </div>
+                    </form>
+                </th>
+                <th>
+                    {% if categoria %}
+                    <h3>{{ categoria }}</h3>
+                    {% else %}
+                    <h3>Productos Medicinales</h3>
+                    {% endif %}
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <td>
+                <div id="containerCategorias">
+                    <div class="categorias-wrapper">
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='BAJAR DE PESO' %}" class="categorias">
+                                BAJAR DE PESO
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/bajarpeso.png'%}" alt="">
+                        </div>
+
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='RESFRIADO' %}" class="categorias">
+                                RESFRIADO
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/resfriado.png'%}" alt="">
+                        </div>
+
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='INFECCIÓN URINARIA' %}" class="categorias">
+                                INFECCIÓN URINARIA
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/infeccionUrinaria.png' %}">
+                        </div>
+
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='MULTIVITAMÍNICO' %}" class="categorias">
+                                MULTIVITAMÍNICOS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/multivitaminico.png'%}"
+                                alt="">
+                        </div>
+
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='ENERGIZANTES' %}" class="categorias">
+                                ENERGIZANTES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/energizante.png'%}" alt="">
+                        </div>
+
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='COLON' %}" class="categorias">
+                                COLON
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/colon.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='GÁSTRICOS' %}" class="categorias">
+                                GÁSTRICOS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/gastricos.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='ESTREÑIMIENTO' %}" class="categorias">
+                                ESTREÑIMIENTO
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/estreñimiento.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='TRANQUILIZANTES' %}" class="categorias">
+                                TRANQUILIZANTES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/tranquilizantes.png'%}"
+                                alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='INSOMNIO' %}" class="categorias">
+                                INSOMNIO
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/imsomnio.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='REUMÁTICOS' %}" class="categorias">
+                                REUMÁTICOS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/reumaticos.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='ÓSEOS' %}" class="categorias">
+                                ÓSEOS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/oseos.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='REGENERADORES' %}" class="categorias">
+                                REGENERADORES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/regeneradores.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='LIMPIADORES ORGÁNICOS' %}"
+                                class="categorias">
+                                LIMPIADORES ORGÁNICOS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/limpiadoresorganicos.png'%}"
+                                alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='RENAL' %}" class="categorias">
+                                RENAL
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/renal.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='HEPATOPROTECTORES' %}" class="categorias">
+                                HEPATOPROTECTORES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/hepatoprotectores.png'%}"
+                                alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='COLESTEROL Y TRIGLICÉRIDOS' %}"
+                                class="categorias">
+                                COLESTEROL Y TRIGLICÉRIDOS
+                            </a>
+                            <img class="categorias-img"
+                                src="{% static 'img/Papahe/iconos/colesterolytrigliceridos.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='CONCENTRACIÓN' %}" class="categorias">
+                                CONCENTRACIÓN
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/concentracion.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='CIRCULACIÓN' %}" class="categorias">
+                                CIRCULACIÓN
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/circulacion.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='HIPERTENSIÓN' %}" class="categorias">
+                                HIPERTENSIÓN
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/hipertension.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='DIABETES' %}" class="categorias">
+                                DIABETES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/diabetes.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='SALUD FEMENINA' %}" class="categorias">
+                                SALUD FEMENINA
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/saludfemenina.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='SALUD MASCULINA' %}" class="categorias">
+                                SALUD MASCULINA
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/saludmasculina.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='SALUD MASCULINA' %}" class="categorias">
+                                PRODUCTOS NATURALES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/productosnaturales.png'%}"
+                                alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='SHAMPOO Y ACONDICIONADORES' %}"
+                                class="categorias">
+                                SHAMPOO Y ACONDICIONADORES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/shampoo.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='LOCIONES' %}" class="categorias">
+                                LOCIONES
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/lociones.png'%}" alt="">
+                        </div>
+                        <div class="categoria-container">
+                            <a href="{% url 'medicinalCategoria' categoria='OTROS' %}" class="categorias">
+                                OTROS
+                            </a>
+                            <img class="categorias-img" src="{% static 'img/Papahe/iconos/otros.png'%}" alt="">
+                        </div>
+
+                    </div>
+
+
+            </td>
+            <td>
+                {% if medicinal %}
+                <div id="containerProductos" class="product-list">
+                    {% for m in medicinal %}
+                    <div class="product-item">
+                        <a href="{% url 'productInfo' m.id %}">
+                            <img src="{{ m.imagen.url }}" alt="{{ m.nombre }}" id="catalogoImg">
+                        </a>
+                        <p class="text-center" id="medNombre">{{ m.nombre }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning" role="alert">No se encontraron productos medicinales</div>
+                {% endif %}
+            </td>
+
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
