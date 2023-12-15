@@ -102,7 +102,8 @@ body {
 
 .table-bordered, .table-bordered td, .table-bordered th {
     background-color: #FFE9A2;
-    border: 1px solid #f02323;
+    border: 2px solid #f02323;
+
 }
 
 
@@ -234,7 +235,7 @@ td {
 .categoria-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Ajusta el valor según sea necesario */
+    margin-bottom: 5px ;
 }
 
 #containerProductos {
@@ -314,5 +315,5 @@ i {
 }
 #imagen-OTROS{
     height: 80px;
-    width: 80px;
+    width: 85px;
 }

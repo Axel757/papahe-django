@@ -266,7 +266,7 @@ def agregarGastronomico(request):
                 else:
                     print(form.errors)
                     messages.error(
-                        request, 'Verifique los datos correspondientes al producto gastronómico.')
+                        request, form.errors)
         except IntegrityError as e:
             messages.error(
                 request, 'Error al agregar el producto {}'.format(str(e)))
