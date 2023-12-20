@@ -282,8 +282,6 @@ def agregarGastronomico(request):
                         )
                     else:
                         form.save()
-                        messages.success(
-                            request, 'Producto gastronómico agregado con éxito!')
                         return redirect('gastronomico')
                 else:
                     print(form.errors)
