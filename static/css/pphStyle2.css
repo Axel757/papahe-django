@@ -157,3 +157,9 @@ a span {
     height: 500px;
     width: 500px;
 }
+
+.messages{
+    font-weight: bold;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

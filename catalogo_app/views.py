@@ -49,7 +49,7 @@ def registro2(request):
                                 password=form.cleaned_data['password1'])
             login(request, user)
 
-            return redirect('login')
+            return redirect('seleccion')
 
     else:
         form = CustomUserCreationForm()
@@ -87,15 +87,39 @@ def salir(request):
 # Sistema de catalogo
 
 
-@login_required
+@login_required(login_url=None)  # No redireccionar a la página de inicio de sesión
 def catalogoData(request):
-    tipo_usuario = request.user.tipo_usuario
+    tipo_usuario = request.user.tipo_usuario if request.user.is_authenticated else None
     username = request.user.username if request.user.is_authenticated else 'Anónimo'
     catalogo = Catalogo.objects.all()
-    data = {'username': username, 'catalogo': catalogo,
-            'tipo_usuario': tipo_usuario}
+    data = {'username': username, 'catalogo': catalogo, 'tipo_usuario': tipo_usuario}
     return render(request, "seleccion.html", data)
 
+def eliminar_usuario(request, usuario_id):
+    if request.method == 'GET' and request.user.is_authenticated and request.user.is_staff:
+
+        usuario = get_object_or_404(get_user_model(), id=usuario_id)
+        
+        # Verificar si el usuario está intentando eliminarse a sí mismo
+        if usuario == request.user:
+            messages.error(request, 'No puedes eliminarte a ti mismo, valora tu vida.')
+            return redirect('Usuariosdata')
+
+        usuario.delete()
+        messages.success(request, 'Usuario eliminado con éxito.')
+        return redirect('Usuariosdata')
+    else:
+
+        messages.error(request, 'No tienes permisos para realizar esta acción.')
+        return redirect('Usuariosdata')
+
+
+@login_required
+def Usuariosdata(request):
+    usuarios = CustomUser.objects.all()
+    data = {'usuarios': usuarios}
+
+    return render(request, 'userPanel.html', data)
 
 @login_required
 def medicinalData(request):
@@ -181,8 +205,6 @@ def agregar(request):
                         )
                     else:
                         form.save()
-                        messages.success(
-                            request, 'Producto agregado satisfactoriamente!')
                         return redirect('medicinal')
                 else:
                     print(form.errors)

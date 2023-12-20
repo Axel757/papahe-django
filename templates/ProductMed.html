@@ -22,6 +22,13 @@
             </a>
         </div>
         <img src="{% static 'img/Papahe/LOGO-DEF2023-02.png' %}" class="pphLogoMed" alt="Logo">
+        {% if messages %}
+        <ul class="messages text-center ul">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </div>
     {% block content %}
     <table class="table table-bordered">

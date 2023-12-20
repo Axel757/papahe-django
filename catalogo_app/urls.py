@@ -11,6 +11,7 @@ urlpatterns = [
     path('salir/', LogoutView.as_view(), name='salir'),
 
     path('seleccion/', catalogoData, name='seleccion'),
+    path('usuarios/',Usuariosdata, name='Usuariosdata'),
     path('catalogo/medicinal/', medicinalData, name='medicinal'),
     path('catalogo/gastronomico/', gastronomicoData, name='gastronomico'),
 
@@ -46,5 +47,7 @@ urlpatterns = [
 
     path('catalogo/<int:producto_id>/',
          eliminarGastronomico, name='eliminarGastronomico'),
+    
+     path('eliminar_usuario/<int:usuario_id>/', eliminar_usuario, name='eliminar_usuario'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -18,7 +18,7 @@
         <img class="pphLogo" src="{% static 'img/Papahe/LOGO-DEF2023-06.png' %}" alt="">
         <form action="" method="post">
             {% csrf_token %}
-
+            
             <div class="mb-3">
                 <label for="{{ form.username.id_for_label }}">Nombre:</label>
                 <br>
@@ -34,10 +34,13 @@
 
             <div class="text-center">
                 <input type="submit" value="Iniciar sesión" class="btn btn-outline-dark">
+                <br>
+
             </div>
             <br>
 
-
+        </form>
+        
         </div>
         <br>
 

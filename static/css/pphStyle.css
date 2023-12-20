@@ -61,3 +61,13 @@ button a {
     background-repeat: repeat-x;
     background-size: contain;
 }
+
+.messages{
+    font-weight: bold;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li{
+    display: none;
+}
