@@ -13,6 +13,10 @@
 
 <body>
     <h1 class="text-center">Registro de Usuarios</h1>
+    <a class="panel" href="{% url 'seleccion' %}">
+        <h3>
+            << Regresar</h3>
+    </a>
     <div class="container">
         <a href="{% url 'login' %}"><img class="pphLogo" src="{% static 'img/Papahe/LOGO-DEF2023-06.png' %}" alt=""></a>
         <form action="{% url 'registro2' %}" method="post">
