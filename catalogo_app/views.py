@@ -200,7 +200,7 @@ def agregar(request):
                         messages.error(
                             request,
                             'Ya existe un producto con el nombre "{}" en la farmacia "{}". Por favor, modifique el nombre del producto.'.format(
-                                nombre_producto, farmacia_producto
+                                nombre_producto, farmacia_producto, descripcion_producto
                             )
                         )
                     else:
